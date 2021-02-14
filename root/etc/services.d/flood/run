@@ -5,7 +5,7 @@ umask "${UMASK}"
 
 if [[ ${FLOOD_AUTH} == true ]]; then
     FLOOD_OPTION_AUTH=default && export FLOOD_OPTION_AUTH
-    echo "The default rTorrent socket file is \"/dev/shm/rtorrent.sock\"."
+    echo "rTorrent socket file is \"/dev/shm/rtorrent.sock\"."
 else
     FLOOD_OPTION_AUTH=none && export FLOOD_OPTION_AUTH
 fi
