@@ -23,8 +23,8 @@ ARG RTORRENT_VERSION
 RUN curl -fsSL "https://github.com/jesec/rtorrent/releases/download/v${RTORRENT_VERSION}/rtorrent-linux-amd64" > "${APP_DIR}/rtorrent" && \
     chmod 755 "${APP_DIR}/rtorrent"
 
-ARG VERSION
-RUN curl -fsSL "https://github.com/jesec/flood/releases/download/v${VERSION}/flood-linux-x64" > "${APP_DIR}/flood" && \
+ARG FLOOD_VERSION
+RUN curl -fsSL "https://github.com/jesec/flood/releases/download/v${FLOOD_VERSION}/flood-linux-x64" > "${APP_DIR}/flood" && \
     chmod 755 "${APP_DIR}/flood"
 
 COPY root/ /

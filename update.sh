@@ -30,10 +30,8 @@ elif [[ ${1} == "screenshot" ]]; then
 else
     rtorrent_version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/jesec/rtorrent/releases/latest" | jq -r .tag_name | sed s/v//g)
     [[ -z ${rtorrent_version} ]] && exit 1
-    version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/jesec/flood/releases/latest" | jq -r .tag_name | sed s/v//g)
-    [[ -z ${version} ]] && exit 1
-    old_version=$(jq -r '.version' < VERSION.json)
-    changelog=$(jq -r '.changelog' < VERSION.json)
-    [[ "${old_version}" != "${version}" ]] && changelog="https://github.com/qbittorrent/qbittorrent/compare/${old_version}...${version}"
-    echo '{"version":"'"${version}"'","rtorrent_version":"'"${rtorrent_version}"'","changelog":"'"${changelog}"'"}' | jq . > VERSION.json
+    flood_version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/jesec/flood/releases/latest" | jq -r .tag_name | sed s/v//g)
+    [[ -z ${flood_version} ]] && exit 1
+    version="${rtorrent_version}--${flood_version}"
+    echo '{"version":"'"${version}"'","flood_version":"'"${flood_version}"'","rtorrent_version":"'"${rtorrent_version}"'"}' | jq . > VERSION.json
 fi
