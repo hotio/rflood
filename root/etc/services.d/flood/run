@@ -10,4 +10,5 @@ else
     FLOOD_OPTION_AUTH=none && export FLOOD_OPTION_AUTH
 fi
 
-exec s6-setuidgid hotio "${APP_DIR}/flood" --rundir "${CONFIG_DIR}/flood" --host 0.0.0.0 --port 3000 --rtsocket "/dev/shm/rtorrent.sock"
+# shellcheck disable=SC2086
+exec s6-setuidgid hotio "${APP_DIR}/flood" --rundir "${CONFIG_DIR}/flood" --host 0.0.0.0 --port 3000 --rtsocket "/dev/shm/rtorrent.sock" ${FLOOD_ARGS}
