@@ -11,4 +11,4 @@ else
 fi
 
 # shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/flood" --rundir "${CONFIG_DIR}/flood" --host 0.0.0.0 --port 3000 --rtsocket "/dev/shm/rtorrent.sock" ${FLOOD_ARGS}
+exec s6-setuidgid hotio "${APP_DIR}/flood" --rundir "${CONFIG_DIR}/flood" --host 0.0.0.0 --port "${WEBUI_PORTS%%/*}" --rtsocket "/dev/shm/rtorrent.sock" ${FLOOD_ARGS}
