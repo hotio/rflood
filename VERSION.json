@@ -1,5 +1,5 @@
 {
-  "version": "0.9.8-r14--4.7.0",
+  "version": "0.9.8-r15--4.7.0",
   "flood_version": "4.7.0",
-  "rtorrent_version": "0.9.8-r14"
+  "rtorrent_version": "0.9.8-r15"
 }
