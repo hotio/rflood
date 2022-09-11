@@ -17,4 +17,4 @@ RUN curl -fsSL "https://github.com/jesec/flood/releases/download/v${FLOOD_VERSIO
     chmod 755 "${APP_DIR}/flood"
 
 COPY root/ /
-RUN chmod -R +x /etc/cont-init.d/ /etc/services.d/
+RUN chmod -R +x /etc/cont-init.d/ /etc/services.d/ /etc/cont-finish.d/
