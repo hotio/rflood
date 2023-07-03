@@ -7,7 +7,7 @@ ENV VPN_ENABLED="false" VPN_LAN_NETWORK="" VPN_CONF="wg0" VPN_ADDITIONAL_PORTS="
 
 VOLUME ["${CONFIG_DIR}"]
 
-RUN apk add --no-cache privoxy iptables iproute2 openresolv wireguard-tools ipcalc mediainfo && \
+RUN apk add --no-cache privoxy iptables ip6tables iproute2 openresolv wireguard-tools ipcalc mediainfo && \
     apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing wireguard-go
 
 ARG RTORRENT_VERSION
