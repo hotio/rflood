@@ -3,7 +3,7 @@ ARG UPSTREAM_DIGEST_ARM64
 
 FROM ${UPSTREAM_IMAGE}@${UPSTREAM_DIGEST_ARM64}
 EXPOSE 3000
-ENV VPN_ENABLED="false" VPN_LAN_NETWORK="" VPN_CONF="wg0" VPN_ADDITIONAL_PORTS="" FLOOD_AUTH="false" WEBUI_PORTS="3000/tcp,3000/udp" PRIVOXY_ENABLED="false" S6_SERVICES_GRACETIME=180000
+ENV VPN_ENABLED="false" VPN_LAN_NETWORK="" VPN_CONF="wg0" VPN_ADDITIONAL_PORTS="" FLOOD_AUTH="false" WEBUI_PORTS="3000/tcp,3000/udp" PRIVOXY_ENABLED="false" S6_SERVICES_GRACETIME=180000 S6_STAGE2_HOOK="/init-hook"
 
 VOLUME ["${CONFIG_DIR}"]
 
@@ -19,4 +19,4 @@ RUN curl -fsSL "https://github.com/jesec/flood/releases/download/v${FLOOD_VERSIO
     chmod 755 "${APP_DIR}/flood"
 
 COPY root/ /
-RUN chmod -R +x /etc/cont-init.d/ /etc/services.d/ /etc/cont-finish.d/
+RUN chmod +x /init-hook

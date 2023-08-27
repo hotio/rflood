@@ -37,3 +37,11 @@ fi
 echo "Applying permissions to ${CONFIG_DIR}"
 chmod "=rwx" "${CONFIG_DIR}"
 chown hotio:hotio "${CONFIG_DIR}"
+
+if [[ ! -f "${CONFIG_DIR}/rtorrent.rc" ]]; then
+    echo "Installing default \"rtorrent.rc\"..."
+    cp "${APP_DIR}/rtorrent.rc" "${CONFIG_DIR}/rtorrent.rc"
+    chown hotio:hotio "${CONFIG_DIR}/rtorrent.rc"
+fi
+
+find "${CONFIG_DIR}" -name rtorrent.lock -type f -delete
