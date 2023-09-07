@@ -1,9 +1,9 @@
 {
   "latest": true,
   "description": "Releases",
-  "version": "0.9.8-r16--4.7.0",
+  "version": "0.9.8-r15--4.7.0",
   "flood_version": "4.7.0",
-  "rtorrent_version": "0.9.8-r16",
+  "rtorrent_version": "0.9.8-r15",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "alpine",
   "upstream_digest_amd64": "sha256:506056136957b8ba9262842bd78d73b7dac96a2f2f075693eb5bc2686dcf0891",
