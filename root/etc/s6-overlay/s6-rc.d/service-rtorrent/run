@@ -3,4 +3,11 @@
 
 umask "${UMASK}"
 
-exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true"
+ARGS=""
+if [[ -f "${CONFIG_DIR}/forwarded_port" ]]; then
+    port=$(cat "${CONFIG_DIR}/forwarded_port")
+    ARGS="-p ${port}-${port}"
+fi
+
+# shellcheck disable=SC2086
+exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true" ${ARGS}
