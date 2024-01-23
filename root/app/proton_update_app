@@ -1,2 +1,5 @@
 # shellcheck shell=bash
+until pidof rtorrent; do   
+    sleep 1
+done
 killall rtorrent

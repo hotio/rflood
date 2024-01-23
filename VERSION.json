@@ -5,8 +5,8 @@
   "flood_version": "4.7.0",
   "rtorrent_version": "0.9.8-r16",
   "upstream_image": "ghcr.io/hotio/base",
-  "upstream_tag": "alpine",
-  "upstream_digest_amd64": "sha256:aba1ad70d73a01a04940ceefcc0506c8867aa99be1e1598f7f57d79dc462ba1d",
-  "upstream_digest_arm64": "sha256:5f44dcee2c34486af761dca45b1a7b57ef953ee485050544c2255c6f21ed0278",
+  "upstream_tag": "alpinevpn",
+  "upstream_digest_amd64": "sha256:c86c0e368540bc4aead83542b1c4b22278b918e42e0b41fa07aa00b9e8fb6b9f",
+  "upstream_digest_arm64": "sha256:d787cba24d9231a491eb3ce8474a3305cadd8bae4d2b59e0621991a407a6afd8",
   "test_url": "http://localhost:3000"
 }
