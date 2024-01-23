@@ -17,7 +17,8 @@ while true; do
             old_port=$(cat "${CONFIG_DIR}/forwarded_port")
             if [[ "${port}" != "${old_port}" ]]; then
                 echo "${port}" > "${CONFIG_DIR}/forwarded_port"
-                killall rtorrent
+                # shellcheck source=/dev/null
+                source "${APP_DIR}/proton_update_app"
             fi
             echo "[INFO] [$(date '+%Y-%m-%d %H:%M:%S')] ProtonVPN forwarded port is \"${port}\"."
         else
