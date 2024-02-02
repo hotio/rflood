@@ -3,7 +3,8 @@ ARG UPSTREAM_DIGEST_ARM64
 
 FROM ${UPSTREAM_IMAGE}@${UPSTREAM_DIGEST_ARM64}
 EXPOSE 3000
-ENV FLOOD_AUTH="false" WEBUI_PORTS="3000/tcp,3000/udp"
+ARG IMAGE_STATS
+ENV IMAGE_STATS=${IMAGE_STATS} FLOOD_AUTH="false" WEBUI_PORTS="3000/tcp,3000/udp"
 
 ARG RTORRENT_VERSION
 RUN curl -fsSL "https://github.com/jesec/rtorrent/releases/download/v${RTORRENT_VERSION}/rtorrent-linux-arm64" > "${APP_DIR}/rtorrent" && \
