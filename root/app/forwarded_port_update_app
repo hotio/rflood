@@ -2,4 +2,5 @@
 until pidof rtorrent > /dev/null; do   
     sleep 1
 done
+echo "[INFO] [$(date '+%Y-%m-%d %H:%M:%S')] Killing rTorrent to let it restart with forwarded port!"
 killall rtorrent
