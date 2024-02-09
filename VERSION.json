@@ -1,8 +1,8 @@
 {
   "description": "Releases",
-  "flood_version": "4.7.0",
+  "flood_version": "",
   "latest": true,
-  "rtorrent_version": "0.9.8-r16",
+  "rtorrent_version": "",
   "test_amd64": true,
   "test_arm64": true,
   "test_url": "http://localhost:3000",
@@ -10,5 +10,5 @@
   "upstream_digest_arm64": "sha256:fc4b8a47ddd1127922ae285caf7d164ef08e58a713c49cde71ff2c6a7b48de04",
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "alpinevpn",
-  "version": "0.9.8-r16--4.7.0"
+  "version": "--"
 }
