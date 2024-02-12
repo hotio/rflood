@@ -15,7 +15,7 @@ FLOOD_AUTH=${FLOOD_AUTH}
 if [[ ! -f "${CONFIG_DIR}/rtorrent.rc" ]]; then
     echo "Installing default \"rtorrent.rc\"..."
     cp "${APP_DIR}/rtorrent.rc" "${CONFIG_DIR}/rtorrent.rc"
-    chown hotio:hotio "${CONFIG_DIR}/rtorrent.rc"
+    find "${CONFIG_DIR}/rtorrent.rc" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown hotio:hotio {} +
 fi
 
 find "${CONFIG_DIR}" -name rtorrent.lock -type f -delete
