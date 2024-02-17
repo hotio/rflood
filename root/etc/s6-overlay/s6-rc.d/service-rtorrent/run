@@ -5,7 +5,7 @@ umask "${UMASK}"
 
 ARGS=""
 if [[ -f "${CONFIG_DIR}/wireguard/forwarded_port" ]]; then
-    port=$(cat "${CONFIG_DIR}/wireguard/forwarded_port")
+    port=$(sed -n '1p' "${CONFIG_DIR}/wireguard/forwarded_port")
     ARGS="-p ${port}-${port}"
 fi
 
