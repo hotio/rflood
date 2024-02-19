@@ -7,6 +7,7 @@ ARGS=""
 if [[ -f "${CONFIG_DIR}/wireguard/forwarded_port" ]]; then
     port=$(sed -n '1p' "${CONFIG_DIR}/wireguard/forwarded_port")
     ARGS="-p ${port}-${port}"
+    echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Starting on port [${port}]."
 fi
 
 # shellcheck disable=SC2086
