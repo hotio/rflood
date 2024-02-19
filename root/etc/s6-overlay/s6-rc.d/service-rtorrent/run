@@ -3,12 +3,5 @@
 
 umask "${UMASK}"
 
-ARGS=""
-if [[ -f "${CONFIG_DIR}/wireguard/forwarded_port" ]]; then
-    port=$(sed -n '1p' "${CONFIG_DIR}/wireguard/forwarded_port")
-    ARGS="-p ${port}-${port}"
-    echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Starting on port [${port}]."
-fi
-
 # shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true" ${ARGS}
+exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true"
