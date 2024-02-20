@@ -17,5 +17,3 @@ if [[ ! -f "${CONFIG_DIR}/rtorrent.rc" ]]; then
     cp "${APP_DIR}/rtorrent.rc" "${CONFIG_DIR}/rtorrent.rc"
     find "${CONFIG_DIR}/rtorrent.rc" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown hotio:hotio {} +
 fi
-
-find "${CONFIG_DIR}" -name rtorrent.lock -type f -delete
