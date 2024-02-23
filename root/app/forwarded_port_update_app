@@ -7,7 +7,7 @@ if [[ "${old_port_range}" != "${port}-${port}" ]]; then
     sed -i "s/network.port_range.set.*/network.port_range.set = ${port}-${port}/g" "${CONFIG_DIR}/rtorrent.rc"
     sed -i "s/network.port_random.set.*/network.port_random.set = no/g" "${CONFIG_DIR}/rtorrent.rc"
     killall rtorrent
-    echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Shutting down to restart with forwarded port!"
+    echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Shutting down to restart with forwarded port [${port}]."
 else
     echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Nothing to do, forwarded port hasn't changed."
 fi
