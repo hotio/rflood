@@ -6,6 +6,8 @@
 # for an up-to-date version.
 #############################################################################
 
+## Fix Added Date in Flood UI
+method.set_key = event.download.inserted_new, loaded_time, "d.custom.set=addtime,$cat=$system.time=;d.save_full_session="
 
 ## Instance layout (base paths)
 method.insert = cfg.basedir,  private|const|string, (cat,"/config/")
