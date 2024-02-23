@@ -6,7 +6,7 @@ EXPOSE 3000
 ARG IMAGE_STATS
 ENV IMAGE_STATS=${IMAGE_STATS} FLOOD_AUTH="false" WEBUI_PORTS="3000/tcp,3000/udp,5000/tcp,5000/udp"
 
-RUN apk add --no-cache xmlrpc-c-tools nginx openssl && \
+RUN apk add --no-cache xmlrpc-c-tools nginx openssl mediainfo && \
     ln -s "${CONFIG_DIR}/rpc2/basic_auth_credentials" "${APP_DIR}/basic_auth_credentials"
 
 ARG RTORRENT_VERSION
