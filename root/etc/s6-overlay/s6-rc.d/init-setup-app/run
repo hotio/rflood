@@ -17,3 +17,12 @@ if [[ ! -f "${CONFIG_DIR}/rtorrent.rc" ]]; then
     cp "${APP_DIR}/rtorrent.rc" "${CONFIG_DIR}/rtorrent.rc"
     find "${CONFIG_DIR}/rtorrent.rc" -maxdepth 0 \( ! -user hotio -or ! -group hotio \) -exec chown hotio:hotio {} +
 fi
+
+if [[ ! -f "${CONFIG_DIR}/rpc2/basic_auth_credentials" ]]; then
+    echo "Creating new \"basic_auth_credentials\" file for RPC2..."
+    mkdir "${CONFIG_DIR}/rpc2"
+    rpc2_password=$(openssl rand -base64 10)
+    echo "hotio:$(openssl passwd -5 "${rpc2_password}")" >> "${CONFIG_DIR}/rpc2/basic_auth_credentials"
+    echo "Your RPC2 credentials are [hotio:${rpc2_password}]."
+    find "${CONFIG_DIR}/rpc2" \( ! -user hotio -or ! -group hotio \) -exec chown hotio:hotio {} +
+fi

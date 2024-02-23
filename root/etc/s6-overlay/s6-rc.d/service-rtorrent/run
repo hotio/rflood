@@ -4,4 +4,4 @@
 umask "${UMASK}"
 
 # shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true"
+exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8"
