@@ -3,4 +3,6 @@
 
 umask "${UMASK}"
 
+readarray -td, PORTS <<< "${WEBUI_PORTS}"
+sed -i "s/0.0.0.0:5000/0.0.0.0:${PORTS[2]%%/*}/" "${APP_DIR}/nginx.conf"
 exec s6-setuidgid hotio nginx -c "${APP_DIR}/nginx.conf" -p "${CONFIG_DIR}/rpc2" -e "error.log" -g "daemon off;pid nginx.pid;"
