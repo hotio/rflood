@@ -20,7 +20,7 @@ fi
 
 if [[ ! -f "${CONFIG_DIR}/rpc2/basic_auth_credentials" ]]; then
     echo "Creating new \"basic_auth_credentials\" file for RPC2..."
-    mkdir "${CONFIG_DIR}/rpc2"
+    [[ ! -d "${CONFIG_DIR}/rpc2" ]] && mkdir "${CONFIG_DIR}/rpc2"
     rpc2_password=$(openssl rand -base64 10)
     echo "hotio:$(openssl passwd -5 "${rpc2_password}")" >> "${CONFIG_DIR}/rpc2/basic_auth_credentials"
     echo "Your RPC2 credentials are [hotio:${rpc2_password}]."
