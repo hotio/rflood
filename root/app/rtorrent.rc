@@ -33,11 +33,9 @@ network.port_random.set = no
 
 
 ## Tracker-less torrent and UDP tracker support
-## (conservative settings for 'private' trackers, change for 'public')
-dht.mode.set = disable
-protocol.pex.set = no
-
-trackers.use_udp.set = no
+dht.mode.set = auto
+protocol.pex.set = yes
+trackers.use_udp.set = yes
 
 
 ## Peer settings
