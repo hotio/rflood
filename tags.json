@@ -2,13 +2,13 @@
   "release": {
     "description": "Releases",
     "hide": false,
-    "last_updated": "2025-01-17T07:03:20.000Z",
-    "last_updated_url": "https://github.com/hotio/rflood/actions/runs/12824137819",
+    "last_updated": "2025-01-18T09:08:11.000Z",
+    "last_updated_url": "https://github.com/hotio/rflood/actions/runs/12842621214",
     "latest": true,
     "tags": [
       "release",
       "release-0.9.8-r16--4.9.0",
-      "release-7d3969c"
+      "release-cbd46b8"
     ]
   }
 }
