@@ -1,5 +1,5 @@
 #!/bin/bash
-rtorrent_version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/jesec/rtorrent/releases/latest" | jq -re .tag_name) || exit 1
+rtorrent_version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/rakshasa/rtorrent/releases/latest" | jq -re .tag_name) || exit 1
 [[ -z ${rtorrent_version} ]] && exit 0
 [[ ${rtorrent_version} == null ]] && exit 0
 flood_version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/jesec/flood/releases/latest" | jq -re .tag_name) || exit 1
