@@ -6,12 +6,12 @@ old_port_range=$(grep network.port_range.set "${CONFIG_DIR}/rtorrent.rc" | awk -
 if [[ "${old_port_range}" != "${port}-${port}" ]]; then
     sed -i "s/network.port_range.set.*/network.port_range.set = ${port}-${port}/g" "${CONFIG_DIR}/rtorrent.rc"
     sed -i "s/network.port_random.set.*/network.port_random.set = no/g" "${CONFIG_DIR}/rtorrent.rc"
-    echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Shutting down to restart with forwarded port [${port}]."
+    log_inf "[RTORRENT] Shutting down to restart with forwarded port [${port}]."
     until xmlrpc localhost:5000 system.client_version > /dev/null; do
-        echo "[WRN] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Application not ready to receive xml-rpc commands!"
+        log_wrn "[RTORRENT] Application not ready to receive xml-rpc commands!"
         sleep 1
     done
     xmlrpc localhost:5000 system.shutdown.normal > /dev/null
 else
-    echo "[INF] [$(date '+%Y-%m-%d %H:%M:%S')] [RTORRENT] Nothing to do, forwarded port hasn't changed."
+    log_inf "[RTORRENT] Nothing to do, forwarded port hasn't changed."
 fi
