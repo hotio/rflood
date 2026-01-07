@@ -1,15 +1,16 @@
 {
   "release": {
     "commit_message": "Upstream image update",
+    "commit_sha": "5025acee1eeca2aae23a92c4655b7e5eac1865b0",
     "description": "Releases",
     "hide": false,
-    "last_updated": "2026-01-04T09:26:48.000Z",
-    "last_updated_url": "https://github.com/hotio/rflood/actions/runs/20690836135",
+    "last_updated": "2026-01-07T03:57:50.000Z",
+    "last_updated_url": "https://github.com/hotio/rflood/actions/runs/20770106852",
     "latest": true,
     "tags": [
       "release",
       "release-0.16.6--4.11.0",
-      "release-e18b809",
+      "release-5025ace",
       "release-v0",
       "release-v0.16",
       "release-v0.16.6"
