@@ -1,8 +1,8 @@
 ARG UPSTREAM_IMAGE
-ARG UPSTREAM_DIGEST_ARM64
+ARG UPSTREAM_TAG_SHA
 
 # https://github.com/rakshasa/rtorrent/issues/1479#issuecomment-2888925659
-FROM ${UPSTREAM_IMAGE}@${UPSTREAM_DIGEST_ARM64} AS builder
+FROM ${UPSTREAM_IMAGE}:${UPSTREAM_TAG_SHA} AS builder
 RUN apk add --no-cache build-base linux-headers curl-dev ncurses-dev tinyxml2-dev
 ARG RTORRENT_VERSION
 RUN mkdir "/tmp/libtorrent" && \
@@ -18,7 +18,7 @@ RUN mkdir "/tmp/rtorrent" && \
     make -j$(nproc) CXXFLAGS="-w -O3 -flto -Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing" && \
     make install
 
-FROM ${UPSTREAM_IMAGE}@${UPSTREAM_DIGEST_ARM64}
+FROM ${UPSTREAM_IMAGE}:${UPSTREAM_TAG_SHA}
 EXPOSE 3000
 ARG IMAGE_STATS
 ENV IMAGE_STATS=${IMAGE_STATS} FLOOD_AUTH="false" WEBUI_PORTS="3000/tcp"
