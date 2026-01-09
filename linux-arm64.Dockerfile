@@ -4,15 +4,15 @@ ARG UPSTREAM_TAG_SHA
 # https://github.com/rakshasa/rtorrent/issues/1479#issuecomment-2888925659
 FROM ${UPSTREAM_IMAGE}:${UPSTREAM_TAG_SHA} AS builder
 RUN apk add --no-cache build-base linux-headers curl-dev ncurses-dev tinyxml2-dev
-ARG RTORRENT_VERSION
+ARG VERSION
 RUN mkdir "/tmp/libtorrent" && \
-    curl -fsSL "https://github.com/rakshasa/rtorrent/releases/download/v${RTORRENT_VERSION}/libtorrent-${RTORRENT_VERSION}.tar.gz" | tar xzf - -C "/tmp/libtorrent" --strip-components=1 && \
+    curl -fsSL "https://github.com/rakshasa/rtorrent/releases/download/v${VERSION}/libtorrent-${VERSION}.tar.gz" | tar xzf - -C "/tmp/libtorrent" --strip-components=1 && \
     cd "/tmp/libtorrent" && \
     ./configure --disable-debug --disable-shared --enable-static --enable-aligned && \
     make -j$(nproc) CXXFLAGS="-w -O3 -flto -Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing" && \
     make install
 RUN mkdir "/tmp/rtorrent" && \
-    curl -fsSL "https://github.com/rakshasa/rtorrent/releases/download/v${RTORRENT_VERSION}/rtorrent-${RTORRENT_VERSION}.tar.gz" | tar xzf - -C "/tmp/rtorrent" --strip-components=1 && \
+    curl -fsSL "https://github.com/rakshasa/rtorrent/releases/download/v${VERSION}/rtorrent-${VERSION}.tar.gz" | tar xzf - -C "/tmp/rtorrent" --strip-components=1 && \
     cd "/tmp/rtorrent" && \
     ./configure --disable-debug --disable-shared --enable-static --enable-aligned --with-xmlrpc-tinyxml2 && \
     make -j$(nproc) CXXFLAGS="-w -O3 -flto -Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing" && \
