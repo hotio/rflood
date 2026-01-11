@@ -3,5 +3,11 @@
 
 umask "${UMASK}"
 
+if [[ "${VPN_AUTO_PORT_FORWARD}" != "false" ]] && grep -q network.port_range.set "${CONFIG_DIR}/rtorrent.rc"; then
+    until [[ -f "${CONFIG_DIR}/wireguard/forwarded_port_updated" ]]; do   
+        sleep 1
+    done
+fi
+
 # shellcheck disable=SC2086
 exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8"
