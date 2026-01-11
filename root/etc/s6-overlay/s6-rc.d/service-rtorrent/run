@@ -1,13 +1,22 @@
 #!/command/with-contenv bash
 # shellcheck shell=bash
 
+# shellcheck source=/dev/null
+source /etc/s6-overlay/scripts/bash-functions
+
 umask "${UMASK}"
 
-if [[ "${VPN_ENABLED}" == "true" ]] && [[ "${VPN_AUTO_PORT_FORWARD}" != "false" ]] && grep -q network.port_range.set "${CONFIG_DIR}/rtorrent.rc"; then
-    until [[ -f "${CONFIG_DIR}/wireguard/forwarded_port_updated" ]]; do   
+if [[ "${VPN_ENABLED}" == "true" ]] && [[ "${VPN_AUTO_PORT_FORWARD}" != "false" ]]; then
+    log_inf "[RTORRENT] Delaying start until forwarded port is available."
+    until [[ -f "${CONFIG_DIR}/wireguard/forwarded_port_validated" ]]; do   
         sleep 1
     done
+    forwarded_port=$(sed -n '1p' "${CONFIG_DIR}/wireguard/forwarded_port_validated")
+    OPTIONS="try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8,network.port_range.set=${forwarded_port}-${forwarded_port},network.port_random.set=no"
+    log_inf "[RTORRENT] Starting with forwarded port [${forwarded_port}]."
+else
+    OPTIONS="try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8"
 fi
 
 # shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8"
+exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "${OPTIONS}"

@@ -1,18 +1,6 @@
 # shellcheck shell=bash
 
-until grep -q network.port_range.set "${CONFIG_DIR}/rtorrent.rc"; do   
-    sleep 10
-done
-
-old_port_range=$(grep network.port_range.set "${CONFIG_DIR}/rtorrent.rc" | awk -F '=' '{print $2}' | xargs)
-if [[ "${old_port_range}" != "${port}-${port}" ]]; then
-    log_inf "[RTORRENT] Updating forwarded port to [${port}]."
-    sed -i "s/network.port_range.set.*/network.port_range.set = ${port}-${port}/g" "${CONFIG_DIR}/rtorrent.rc"
-    sed -i "s/network.port_random.set.*/network.port_random.set = no/g" "${CONFIG_DIR}/rtorrent.rc"
-    if pid=$(pidof rtorrent); then
-        log_inf "[RTORRENT] Shutting down to restart with forwarded port [${port}]."
-        kill "${pid}"
-    fi
-else
-    log_inf "[RTORRENT] Nothing to do, forwarded port hasn't changed."
+if pid=$(pidof rtorrent); then
+    log_inf "[RTORRENT] Shutting down to restart with forwarded port [${port}]."
+    kill "${pid}"
 fi
