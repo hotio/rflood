@@ -3,7 +3,7 @@
 
 umask "${UMASK}"
 
-if [[ "${VPN_AUTO_PORT_FORWARD}" != "false" ]] && grep -q network.port_range.set "${CONFIG_DIR}/rtorrent.rc"; then
+if [[ "${VPN_ENABLED}" == "true" ]] && [[ "${VPN_AUTO_PORT_FORWARD}" != "false" ]] && grep -q network.port_range.set "${CONFIG_DIR}/rtorrent.rc"; then
     until [[ -f "${CONFIG_DIR}/wireguard/forwarded_port_updated" ]]; do   
         sleep 1
     done
