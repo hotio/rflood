@@ -1,6 +1,6 @@
 {
   "description": "Releases",
-  "version_flood": "4.11.0",
+  "flood_version": "4.11.0",
   "latest": true,
   "test_amd64": true,
   "test_arm64": true,
@@ -8,5 +8,6 @@
   "upstream_image": "ghcr.io/hotio/base",
   "upstream_tag": "alpinevpn",
   "upstream_tag_sha": "alpinevpn-9c717da",
-  "version": "0.16.6"
+  "version": "0.16.6",
+  "version_flood": "4.11.0"
 }
