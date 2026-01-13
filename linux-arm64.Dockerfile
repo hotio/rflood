@@ -28,8 +28,8 @@ RUN apk add --no-cache xmlrpc-c-tools nginx openssl mediainfo && \
 
 COPY --from=builder /usr/local/bin/rtorrent "${APP_DIR}/rtorrent"
 
-ARG FLOOD_VERSION
-RUN curl -fsSL "https://github.com/jesec/flood/releases/download/v${FLOOD_VERSION}/flood-linux-arm64" > "${APP_DIR}/flood" && \
+ARG VERSION_FLOOD
+RUN curl -fsSL "https://github.com/jesec/flood/releases/download/v${VERSION_FLOOD}/flood-linux-arm64" > "${APP_DIR}/flood" && \
     chmod 755 "${APP_DIR}/flood"
 
 COPY root/ /
