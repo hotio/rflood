@@ -1,6 +1,5 @@
 {
   "description": "Releases",
-  "flood_version": "4.11.0",
   "latest": true,
   "test_amd64": true,
   "test_arm64": true,
