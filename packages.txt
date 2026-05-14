@@ -72,7 +72,7 @@ ncurses-terminfo-base-6.5_p20251123-r0
 nftables-1.1.5-r2
 nghttp2-libs-1.69.0-r0
 nghttp3-1.13.1-r0
-nginx-1.28.3-r0
+nginx-1.28.3-r1
 oniguruma-6.9.10-r0
 openresolv-3.17.4-r0
 openssl-3.5.6-r0
