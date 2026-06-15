@@ -19,4 +19,4 @@ else
 fi
 
 # shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "${OPTIONS}" -o "method.use_deprecated=1"
+exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "${OPTIONS}"
