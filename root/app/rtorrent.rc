@@ -54,7 +54,6 @@ protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 ## Limits for file handle resources, this is optimized for
 ## an `ulimit` of 1024 (a common default). You MUST leave
 ## a ceiling of handles reserved for rTorrent's internal needs!
-#network.http.max_open.set = 50
 network.max_open_files.set = 600
 network.max_open_sockets.set = 512
 
@@ -102,13 +101,6 @@ method.insert = d.session_file, simple, "cat=(session.path), (d.hash), .torrent"
 schedule = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), "load/*.torrent")))
 ## Add & download straight away
 schedule = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent")))
-
-
-## Run the rTorrent process as a daemon in the background
-## (and control via XMLRPC sockets)
-#system.daemon.set = true
-#network.scgi.open_local = (cat,(session.path),rpc.socket)
-#execute.nothrow = chmod,770,(cat,(session.path),rpc.socket)
 
 
 ## Logging:
