@@ -12,11 +12,11 @@ if [[ "${VPN_ENABLED}" == "true" ]] && [[ "${VPN_AUTO_PORT_FORWARD}" != "false" 
         sleep 1
     done
     forwarded_port=$(sed -n '1p' "${CONFIG_DIR}/wireguard/forwarded_port_validated")
-    OPTIONS="try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8,network.port_range.set=${forwarded_port}-${forwarded_port},network.port_random.set=no"
+    OPTIONS="try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,network.port_range.set=${forwarded_port}-${forwarded_port},network.port_random.set=no"
     log_inf "[RTORRENT] Starting with forwarded port [${forwarded_port}]."
 else
-    OPTIONS="try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true,encoding.add=UTF-8"
+    OPTIONS="try_import=${CONFIG_DIR}/rtorrent.rc,try_import=${APP_DIR}/rtorrent-fix.rc,network.scgi.open_local=/dev/shm/rtorrent.sock,system.daemon.set=true"
 fi
 
 # shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "${OPTIONS}"
+exec s6-setuidgid hotio "${APP_DIR}/rtorrent" -n -o "${OPTIONS}" -o "method.use_deprecated=1"
