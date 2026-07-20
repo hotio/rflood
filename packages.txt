@@ -1,7 +1,7 @@
 libmediainfo=25.09-r0
 libzen=0.4.41-r0
 mediainfo=25.09-r0
-nginx=1.28.3-r5
+nginx=1.28.3-r6
 openssl=3.5.7-r0
 tinyxml2=11.0.0-r0
 xmlrpc-c++=1.51.08-r5
