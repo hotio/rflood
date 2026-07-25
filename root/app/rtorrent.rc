@@ -48,7 +48,7 @@ throttle.min_peers.seed.set = 30
 throttle.max_peers.seed.set = 80
 trackers.numwant.set = 80
 
-protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
+protocol.encryption.set = prefer
 
 
 ## Limits for file handle resources, this is optimized for
