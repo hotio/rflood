@@ -28,7 +28,7 @@ execute.throw = sh, -c, (cat,\
 
 
 ## Listening port for incoming peer traffic (fixed; you can also randomize it)
-network.listen.port.set = 50000-50000
+network.listen.port.set = 50000
 network.listen.port.random = no
 
 
